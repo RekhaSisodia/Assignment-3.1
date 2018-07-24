@@ -1,0 +1,36 @@
+Assignment 3.1
+
+Ques 1. How many vowels are there in the names of United States?
+         View(USArrests)                  # view dataset
+         names(USArrests)                 # to know the column name of dataset i.e. USArrests
+         US_States<-rownames(USArrests)   # it will store the rownames of dataset in US_States
+         US_States
+         b<-gsub("[^aeiouAEIOU]","C",US_States)
+         b<-gsub("[^C]","v",b)
+         b 
+         library(stringr)
+         str_count(b,"v")
+         sum(str_count(b,"v"))
+
+
+
+Ques 2. Visualize the vowel distribution.
+        USArrests          # data set 
+        names(USArrests)   # to know the column names for State names
+        US_States <- rownames(USArrests) # names of states
+
+        US_States <- paste(US_States, collapse = "")  # convert the names into string
+        US_States
+        US_States <- tolower(strsplit(US_States, "")[[1]]) # conversion  into lower case and spliting each letter
+        US_States
+        US_States <- US_States[US_States %in% letters]
+        table(US_States)     # Frequency of each letter
+        partition<- as.data.frame(table(US_States)) # converted to data frame 
+        names(partition)
+
+
+        colnames(partition) <- c("letters", "Freq")  # changed column names
+        names(partition)
+        library(dplyr)
+        filter(partition, letters %in% c("a","e","i","o","u")) # it will find the no. of vowels in the names of USA States
+
